@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Portfolio Recreation</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      /* Global Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #495057;
+        background-color: #f8f9fa;
+        line-height: 1.6;
+        margin-top: 70px; /* Adjust for fixed navbar */
+      }
+
+      /* Header/Navigation */
+      .fixed-top {
+        background-color: #f8f9fa !important; /* Ensure navbar background */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .navbar {
+        padding: 20px 0;
+      }
+
+      .navbar-brand {
+        font-weight: bold;
+        color: #275168 !important;
+        font-size: 1.8rem;
+      }
+
+      .navbar-nav .nav-link {
+        color: #275168 !important;
+        margin-left: 20px;
+        font-weight: 500;
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: #00c7a7 !important;
+      }
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(43, 81, 104, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .btn-outline-success {
+        color: #00c7a7 !important;
+        border-color: #00c7a7 !important;
+      }
+
+      .btn-outline-success:hover {
+        background-color: #00c7a7 !important;
+        color: white !important;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #1c3643 0%, #275168 100%);
+        color: white;
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        padding: 60px 0;
+      }
+
+      .hero h1 {
+        font-size: 3.8rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .hero h2 {
+        font-size: 2.2rem;
+        font-weight: 300;
+        margin-bottom: 25px;
+        color: #a8dadc;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 35px;
+        color: #e0fbfc;
+      }
+
+      .hero .btn-primary {
+        background-color: #00c7a7;
+        border-color: #00c7a7;
+        color: white;
+        padding: 14px 28px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        margin-right: 15px;
+      }
+
+      .hero .btn-outline-light {
+        border-color: white;
+        color: white;
+        padding: 14px 28px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .hero-image-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        opacity: 0.8;
+      }
+
+      .hero-image {
+        max-height: 100%;
+        border-radius: 5px;
+        margin-right: 60px;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* About Section */
+      .about {
+        padding: 100px 0;
+        background-color: white;
+      }
+
+      .about-image {
+        border-radius: 5px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-info h3 {
+        font-size: 2.8rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #275168;
+      }
+
+      .about-info p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 25px;
+      }
+
+      .about-info strong {
+        font-weight: bold;
+        color: #275168;
+      }
+
+      .about-info .btn-primary {
+        background-color: #00c7a7;
+        border-color: #00c7a7;
+        color: white;
+        padding: 14px 28px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        margin-right: 15px;
+      }
+
+      .about-info .btn-outline-secondary {
+        border-color: #6c757d;
+        color: #6c757d;
+        padding: 14px 28px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .about-info .fab {
+        font-size: 1.3rem;
+        margin-right: 10px;
+      }
+
+      /* My Skills Section */
+      .my-skills {
+        padding: 100px 0;
+        background-color: white;
+      }
+
+      .my-skills h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #275168;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+
+      .skill-image {
+        border-radius: 5px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+      }
+
+      .my-skills h3 {
+        font-size: 1.6rem;
+        color: #275168;
+        margin-bottom: 10px;
+      }
+
+      .progress {
+        height: 10px;
+        border-radius: 5px;
+        background-color: #e9ecef;
+      }
+
+      .progress-bar {
+        background-color: #00c7a7;
+      }
+
+      /* Services Section */
+      .services-section {
+        padding: 100px 0;
+        background-color: #f8f9fa;
+      }
+
+      .services-section h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #275168;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+
+      .service-item {
+        padding: 30px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+      }
+
+      .service-item i {
+        font-size: 2.5rem;
+        color: #00c7a7;
+        margin-right: 20px;
+      }
+
+      .service-item h3 {
+        font-size: 1.8rem;
+        color: #275168;
+        margin-bottom: 5px;
+      }
+
+      .service-item p {
+        font-size: 1rem;
+        color: #6c757d;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        padding: 80px 0;
+        background-color: white;
+        text-align: center;
+      }
+
+      .stats-section .row > div {
+        padding: 30px 0;
+      }
+
+      .stats-section h3 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #275168;
+        margin-bottom: 10px;
+      }
+
+      .stats-section p {
+        font-size: 1.1rem;
+        color: #6c757d;
+      }
+
+      /* Success Work Section */
+      .success-work {
+        padding: 100px 0;
+        background-color: #f8f9fa;
+      }
+
+      .success-work h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #275168;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+
+      .work-item {
+        margin-bottom: 30px;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .work-item img {
+        width: 100%;
+        display: block;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .work-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Footer Section */
+      .site-footer {
+        background-color: #1c3643;
+        color: #e0fbfc;
+        padding: 40px 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      .footer-contact-info {
+        margin-bottom: 20px;
+      }
+
+      .footer-contact-info a {
+        color: #a8dadc;
+        text-decoration: none;
+        margin: 0 15px;
+      }
+
+      .footer-contact-info a:hover {
+        color: #00c7a7;
+      }
+
+      .footer-social-icons a {
+        color: #a8dadc;
+        font-size: 1.2rem;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      .footer-social-icons a:hover {
+        color: #00c7a7;
+      }
+
+      .footer-copyright {
+        margin-top: 20px;
+        color: #a8dadc;
+      }
+
+      /* Media Queries for Responsiveness */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 80px 0;
+        }
+        .hero-image-container {
+          position: static;
+          height: auto;
+          justify-content: center;
+          margin-top: 30px;
+        }
+        .hero-image {
+          max-width: 80%;
+          margin-right: 0;
+        }
+        .about {
+          padding: 80px 0;
+        }
+        .what-i-do {
+          padding: 80px 0;
+        }
+        .my-skills {
+          padding: 80px 0;
+        }
+        .stats-section .row > div {
+          padding: 20px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bg-light py-3 fixed-top">
+      <nav class="container navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="#00c7a7"
+            class="bi bi-code-slash"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M5 0 0 5 5 10h6l5-5-5-5H5zm-.1 4.15 2.95-2.95a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1-1.414 1.414L4.846 5.564a1 1 0 0 1 0-1.414z"
+            />
+            <path
+              d="M8.535 10.465a1 1 0 0 1-.919.53l-4.899-.899a1 1 0 0 1-.185-1.05l3.06-5.64a1 1 0 0 1 .907-.55l4.899.899a1 1 0 0 1 .185 1.05l-3.06 5.64a1 1 0 0 1-.707.29z"
+            />
+          </svg>
+          UI Portfolio
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="pagesDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Pages
+              </a>
+              <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="#">Page 1</a>
+                <a class="dropdown-item" href="#">Page 2</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-outline-success btn-sm ml-lg-3"
+                href="#"
+                >Hire Me</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero d-flex align-items-center">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 hero-content">
+            <h1>Hi, I'm Dev Koech</h1>
+            <h2>Web Developer</h2>
+            <p>
+              I have Graphic design and Photography and have been working on the
+              portfolio since 2016. I can give your business a new creative
+              start right away! Contact me and we can discuss your vision.
+            </p>
+            <div>
+              <a href="#" class="btn btn-primary">Hire Me</a>
+              <a href="#" class="btn btn-outline-light">My Portfolio</a>
+            </div>
+          </div>
+          <div class="col-md-6 hero-image-container d-none d-md-block">
+            <img
+              src="images/background.jpg"
+              alt="Dev_Koech"
+              class="hero-image img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <img
+              src="images/background.jpg"
+              alt="Koech Black and White"
+              class="about-image img-fluid"
+            />
+          </div>
+          <div class="col-md-8 about-info">
+            <h3>A Lead UI Designer &amp; Web Developer Based In Kenya</h3>
+            <p>
+              I have Graphic design and Photography and have been working on the
+              portfolio since 2016. I can give your business a new creative
+              start right away! Contact me and we can discuss your vision.
+            </p>
+            <p>
+              My formal education in Multimedia Design and my passion for visual
+              storytelling allow me to create compelling and user-friendly
+              digital experiences. I believe that good design is not just about
+              aesthetics, but also about functionality and achieving business
+              goals.
+            </p>
+            <p><strong>Name:</strong> Dev_Koech</p>
+            <p><strong>Email:</strong> koechsophinius2002@email.com</p>
+            <p><strong>From:</strong> Nairobi, Kenya</p>
+            <p><strong>Phone:</strong> +254 794 248 235</p>
+            <div class="mt-3">
+              <strong>Follow me on:</strong>
+              <a href="#" class="text-primary mr-2"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="http:x.com/Dev_Koech" class="text-info mr-2"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="http:instagram.com/Dev_Koech" class="text-danger mr-2"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="http:www.linkedin/in/Koech-Kim" class="text-primary mr-2"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="wa.me794248235" class="text-success mr-2"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+            <div class="mt-4">
+              <a href="#" class="btn btn-primary">Hire Me</a>
+              <a href="#" class="btn btn-outline-secondary">Download CV</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="my-skills py-5">
+      <div class="container">
+        <h2 class="mb-5 text-center">My Featured Skills</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              src="images/skills.jpeg "
+              alt="Featured Skills"
+              class="skill-image img-fluid rounded"
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="skill-progress">
+              <h3>UI/UX Design</h3>
+              <div class="progress">
+                <div
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: 90%"
+                  aria-valuenow="90"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  90%
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <h3>Web Development</h3>
+              <div class="progress">
+                <div
+                  class="progress-bar bg-info"
+                  role="progressbar"
+                  style="width: 85%"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  85%
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <h3>Branding Design</h3>
+              <div class="progress">
+                <div
+                  class="progress-bar bg-warning"
+                  role="progressbar"
+                  style="width: 80%"
+                  aria-valuenow="80"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  80%
+                </div>
+              </div>
+            </div>
+            <div class="skill-progress">
+              <h3>Responsive Web Design</h3>
+              <div class="progress">
+                <div
+                  class="progress-bar bg-primary"
+                  role="progressbar"
+                  style="width: 95%"
+                  aria-valuenow="95"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  95%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-section py-5">
+      <div class="container">
+        <h2 class="mb-5 text-center">What I Do For You</h2>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item">
+              <i class="fas fa-code"></i>
+              <h3>Web Development</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item">
+              <i class="fas fa-palette"></i>
+              <h3>Design Trends</h3>
+              <p>
+                Sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item">
+              <i class="fas fa-search"></i>
+              <h3>Research &amp; Analysis</h3>
+              <p>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item">
+              <i class="fas fa-headset"></i>
+              <h3>Customer Support</h3>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item">
+              <i class="fas fa-mobile-alt"></i>
+              <h3>Responsive Design</h3>
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpaqui
+                officia deserunt.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item">
+              <i class="far fa-file-image"></i>
+              <h3>PSD Design</h3>
+              <p>
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+                oditaut fugit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h3>135</h3>
+            <p>Happy Clients</p>
+          </div>
+          <div class="col-md-3">
+            <h3>225</h3>
+            <p>Projects Completed</p>
+          </div>
+          <div class="col-md-3">
+            <h3>115</h3>
+            <p>Awards Won</p>
+          </div>
+          <div class="col-md-3">
+            <h3>272</h3>
+            <p>Cups of Coffee</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="success-work py-5">
+      <div class="container">
+        <h2 class="mb-5 text-center">My Success Work</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="work-item">
+              <img src="images/work1.png" alt="Work 1" class="img-fluid" />
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="work-item">
+              <img src="images/work22.jpeg" alt="Work 2" class="img-fluid" />
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="work-item">
+              <img src="images/work3.png" alt="Work 3" class="img-fluid" />
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="work-item">
+              <img src="images/work4.png" alt="Work 4" class="img-fluid" />
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="work-item">
+              <img src="images/work5.png" alt="Work 5" class="img-fluid" />
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="work-item">
+              <img src="images/work16.png" alt="Work 6" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-contact-info">
+          <a href="tel:+1234567890"
+            ><i class="fas fa-phone-alt mr-2"></i> +1 234 567 890</a
+          >
+          <a href="mailto:info@urwebsitename.com"
+            ><i class="fas fa-envelope mr-2"></i> info@urwebsitename.com</a
+          >
+          <a href="#"
+            ><i class="fas fa-map-marker-alt mr-2"></i> 108 Avenue, Street, UK -
+            62857</a
+          >
+        </div>
+        <div class="footer-social-icons">
+          <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="http:x.com/Dev_Koech" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="instagram.com/Dev_Koech" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+        <div class="footer-copyright">
+          &copy; 2025 UI Portfolio. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
